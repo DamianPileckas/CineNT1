@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CineMaster.Models.Sala>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="
+    background: white;
+    opacity: 0.8;
+    box-shadow: 1px 1px 10px black;
+    padding: 5px;
+    margin:5%;
+">
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero_Sala)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero_Sala)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Sala_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Sala_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Sala_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

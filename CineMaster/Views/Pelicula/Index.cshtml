@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CineMaster.Models.Pelicula>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div style="
+    background: white;
+    opacity: 0.8;
+    box-shadow: 1px 1px 10px black;
+    padding: 5px;
+    margin:5%;
+">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Pelicula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duracion)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_Pelicula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracion)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Pelicula_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Pelicula_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Pelicula_ID })
+                </td>
+            </tr>
+
+        }
+
+    </table>
+</div>

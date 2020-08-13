@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Cliente_ID" />
+          </Key>
+          <Property Name="Cliente_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Cliente" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Nro_Tarjeta" Type="varchar" MaxLength="255" />
+          <Property Name="Contrasenia" Type="varchar" MaxLength="255" />
+          <Property Name="Dni_Cliente" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="Compra_ID" />
+          </Key>
+          <Property Name="Compra_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entrada" Type="int" Nullable="false" />
+          <Property Name="Cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entrada">
+          <Key>
+            <PropertyRef Name="Entrada_ID" />
+          </Key>
+          <Property Name="Entrada_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Asiento" Type="varchar" MaxLength="255" />
+          <Property Name="Fecha" Type="varchar" MaxLength="255" />
+          <Property Name="Hora" Type="varchar" MaxLength="255" />
+          <Property Name="Sala" Type="int" Nullable="false" />
+          <Property Name="Pelicula" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="Pelicula_ID" />
+          </Key>
+          <Property Name="Pelicula_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Pelicula" Type="varchar" MaxLength="255" />
+          <Property Name="Genero" Type="varchar" MaxLength="255" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="Duracion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="Sala_ID" />
+          </Key>
+          <Property Name="Sala_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero_Sala" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_Cliente_ClienteID">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Cliente_ID" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrada_EntradaID">
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrada">
+              <PropertyRef Name="Entrada_ID" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Entrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_PeliculaID">
+          <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="1" />
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelicula">
+              <PropertyRef Name="Pelicula_ID" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="Pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_SalaID">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="Sala_ID" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="Sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrada" EntityType="Self.Entrada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pelicula" EntityType="Self.Pelicula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cliente_ClienteID" Association="Self.FK_Cliente_ClienteID">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrada_EntradaID" Association="Self.FK_Entrada_EntradaID">
+            <End Role="Entrada" EntitySet="Entrada" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_PeliculaID" Association="Self.FK_Pelicula_PeliculaID">
+            <End Role="Pelicula" EntitySet="Pelicula" />
+            <End Role="Entrada" EntitySet="Entrada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_SalaID" Association="Self.FK_Sala_SalaID">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Entrada" EntitySet="Entrada" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Cliente_ID" />
+          </Key>
+          <Property Name="Cliente_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nro_Tarjeta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasenia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.FK_Cliente_ClienteID" FromRole="Cliente" ToRole="Compra" />
+          <Property Name="Dni_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="Compra_ID" />
+          </Key>
+          <Property Name="Compra_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entrada" Type="Int32" Nullable="false" />
+          <Property Name="Cliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente1" Relationship="Self.FK_Cliente_ClienteID" FromRole="Compra" ToRole="Cliente" />
+          <NavigationProperty Name="Entrada1" Relationship="Self.FK_Entrada_EntradaID" FromRole="Compra" ToRole="Entrada" />
+        </EntityType>
+        <EntityType Name="Entrada">
+          <Key>
+            <PropertyRef Name="Entrada_ID" />
+          </Key>
+          <Property Name="Entrada_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Asiento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Hora" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sala" Type="Int32" Nullable="false" />
+          <Property Name="Pelicula" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.FK_Entrada_EntradaID" FromRole="Entrada" ToRole="Compra" />
+          <NavigationProperty Name="Pelicula1" Relationship="Self.FK_Pelicula_PeliculaID" FromRole="Entrada" ToRole="Pelicula" />
+          <NavigationProperty Name="Sala1" Relationship="Self.FK_Sala_SalaID" FromRole="Entrada" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="Pelicula_ID" />
+          </Key>
+          <Property Name="Pelicula_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Pelicula" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Genero" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Entrada" Relationship="Self.FK_Pelicula_PeliculaID" FromRole="Pelicula" ToRole="Entrada" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="Sala_ID" />
+          </Key>
+          <Property Name="Sala_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero_Sala" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Entrada" Relationship="Self.FK_Sala_SalaID" FromRole="Sala" ToRole="Entrada" />
+        </EntityType>
+        <Association Name="FK_Cliente_ClienteID">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Cliente_ID" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrada_EntradaID">
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrada">
+              <PropertyRef Name="Entrada_ID" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Entrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelicula_PeliculaID">
+          <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="1" />
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelicula">
+              <PropertyRef Name="Pelicula_ID" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="Pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_SalaID">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="1" />
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="Sala_ID" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="Sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" />
+          <EntitySet Name="Entrada" EntityType="Self.Entrada" />
+          <EntitySet Name="Pelicula" EntityType="Self.Pelicula" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" />
+          <AssociationSet Name="FK_Cliente_ClienteID" Association="Self.FK_Cliente_ClienteID">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrada_EntradaID" Association="Self.FK_Entrada_EntradaID">
+            <End Role="Entrada" EntitySet="Entrada" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelicula_PeliculaID" Association="Self.FK_Pelicula_PeliculaID">
+            <End Role="Pelicula" EntitySet="Pelicula" />
+            <End Role="Entrada" EntitySet="Entrada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_SalaID" Association="Self.FK_Sala_SalaID">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Entrada" EntitySet="Entrada" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="Database1Model.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Dni_Cliente" ColumnName="Dni_Cliente" />
+                <ScalarProperty Name="Cliente_ID" ColumnName="Cliente_ID" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nro_Tarjeta" ColumnName="Nro_Tarjeta" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compra">
+            <EntityTypeMapping TypeName="Database1Model.Compra">
+              <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="Compra_ID" ColumnName="Compra_ID" />
+                <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrada">
+            <EntityTypeMapping TypeName="Database1Model.Entrada">
+              <MappingFragment StoreEntitySet="Entrada">
+                <ScalarProperty Name="Entrada_ID" ColumnName="Entrada_ID" />
+                <ScalarProperty Name="Asiento" ColumnName="Asiento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="Pelicula" ColumnName="Pelicula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pelicula">
+            <EntityTypeMapping TypeName="Database1Model.Pelicula">
+              <MappingFragment StoreEntitySet="Pelicula">
+                <ScalarProperty Name="Pelicula_ID" ColumnName="Pelicula_ID" />
+                <ScalarProperty Name="Nombre_Pelicula" ColumnName="Nombre_Pelicula" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sala">
+            <EntityTypeMapping TypeName="Database1Model.Sala">
+              <MappingFragment StoreEntitySet="Sala">
+                <ScalarProperty Name="Sala_ID" ColumnName="Sala_ID" />
+                <ScalarProperty Name="Numero_Sala" ColumnName="Numero_Sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

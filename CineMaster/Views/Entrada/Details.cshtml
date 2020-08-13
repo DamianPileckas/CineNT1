@@ -1,0 +1,57 @@
+﻿@model CineMaster.Models.Entrada
+
+@{
+    ViewBag.Title = "Details";
+}
+<div  style="
+    background: white;
+    opacity: 0.8;
+    box-shadow: 1px 1px 10px black;
+    padding: 5px;
+    margin:5%;
+">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Entrada</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Asiento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Asiento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Hora)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Hora)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sala)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sala)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Entrada_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

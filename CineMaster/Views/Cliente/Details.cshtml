@@ -1,0 +1,73 @@
+﻿@model CineMaster.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+<div style="
+    background: white;
+    opacity: 0.8;
+    box-shadow: 1px 1px 10px black;
+    padding: 5px;
+    margin:5%;
+">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Cliente</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre_Cliente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre_Cliente)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Dni_Cliente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Dni_Cliente)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Contrasenia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Contrasenia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nro_Tarjeta)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nro_Tarjeta)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Logeado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Logeado)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Cliente_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

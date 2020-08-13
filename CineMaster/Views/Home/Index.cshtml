@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@{ if (TempData["Message"] != null)
+    {
+        var mensajeError = "";
+        mensajeError = @ViewData["Message"] as string;
+
+    }
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" id="carousel">
+            <div id="imageCarousel" class="carouselslide" data-interval="2000"
+                 data-ride="carousel" data-pause="hover" data-wrap="true">
+
+                <ol class="carousel-indicators">
+                    <li data-target="#imageCarousel" data-slide-to="0"></li>
+                    <li data-target="#imageCarousel" data-slide-to="1"></li>
+                    <li data-target="#imageCarousel" data-slide-to="2"></li>
+                    <li data-target="#imageCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active">
+                    </div>
+                    <div class="item">
+                        <img src="~/Content/img/bg-img/bg-1.jpg" class="img-responsive">
+                    </div>
+                    <div class="item">
+                        <img src="~/Content/img/bg-img/bg-3.jpg" class="img-responsive">
+                    </div>
+                    <div class="item">
+                        <img src="~/Content/img/bg-img/bg-4.jpg" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tituloCartelera">
+        <h2>Cartelera</h2>
+        <h3>Estrenos</h3>
+    </div>
+    <div id="row">
+        <div id="slider">
+            <div id="slide-container">
+                <div class="slide" data-target-to="0"><img class="imgCartelera" src="~/Content/img/bg-img/1.1.jpg" /><h1 class="compra">@Html.ActionLink("Compra", "Compra", "Home", null, new { style = "text-decoration:none;" })</h1></div>
+                <div class="slide" data-target-to="1"><img class="imgCartelera" src="~/Content/img/bg-img/4.1.jpg" /><h1 class="compra">@Html.ActionLink("Compra", "Compra", "Home", null, new { style = "text-decoration:none;" })</h1></div>
+                <div class="slide" data-target-to="2"><img class="imgCartelera" src="~/Content/img/bg-img/2.1.jpg" /><h1 class="compra">@Html.ActionLink("Compra", "Compra", "Home", null, new { style = "text-decoration:none;" })</h1></div>
+                <div class="slide" data-target-to="3"><img class="imgCartelera" src="~/Content/img/bg-img/3.1.jpg" /><h1 class="compra">@Html.ActionLink("Compra", "Compra", "Home", null, new { style = "text-decoration:none;" })</h1></div>
+                <div class="slide" data-target-to="4"><img class="imgCartelera" src="~/Content/img/bg-img/6.1.jpg" /><h1 class="compra">@Html.ActionLink("Compra", "Compra", "Home", null, new { style = "text-decoration:none;" })</h1></div>
+                <div class="slide" data-target-to="5"><img class="imgCartelera" src="~/Content/img/bg-img/5.1.jpg" /><h1 class="compra">@Html.ActionLink("Compra", "Compra", "Home", null, new { style = "text-decoration:none;" })</h1></div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var show = 3;
+        var w = $('#slider').width() / show;
+        var l = $('.slide').length;
+
+        $('.slide').width(w);
+        $('#slide-container').width(w * l);
+
+        function slider() {
+            $('.slide:first-child').animate({
+                marginLeft: -w
+            }, 'slow', function () {
+                $(this).appendTo($(this).parent()).css({ marginLeft: 0 });
+            });
+        }
+        var timer = setInterval(slider, 6000);
+
+        $('#slider').hover(function () {
+            clearInterval(timer);
+        }, function () {
+            timer = setInterval(slider, 6000);
+        });
+    });
+</script>

@@ -1,0 +1,177 @@
+﻿@model IEnumerable<CineMaster.Models.Pelicula>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="jumbotron">
+
+    <div class="container">
+        <div class="row">
+
+            
+
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/1.1.jpg" data-holder-rendered="true">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h2>El Grinch</h2>
+                        <b>Genero:</b> Infantil
+                        <br />
+                        <b>Descripción:</b>Pelicula Navideña
+                        <br />
+                        <b>Duración:</b>110min
+                    </p>
+                </div>
+                @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 3 }, null)
+            </div>
+
+        </div>
+                       
+
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/2.1.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>La Monja</h2>
+                            <b>Suspenso:</b> Infantil
+                            <br />
+                            <b>Descripción:</b>Una monja se suicida en una abadía rumana y El Vaticano envía a un sacerdote y una novicia a investigar lo sucedido
+                            <br />
+                            <b>Duración:</b>140min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 4 }, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/3.1.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>Cars 2</h2>
+                            <b>Genero:</b> Infantil
+                            <br />
+                            <b>Descripción:</b> Es una película estadounidense animada por computadora de 2011, producida por Walt Disney Picture
+                            <br />
+                            <b>Duración:</b>120min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 5 }, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/9.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>Megalodon</h2>
+                            <b>Genero:</b> Accion
+                            <br />
+                            <b>Descripción:</b>A 200 millas de la costa de China9? un submarino es atacado por un megalodón, un tiburón gigante de 22 metros que se creía que estaba extinto desde hace millones de años.
+                            <br />
+                            <b>Duración:</b>113min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 6 }, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/4.1.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>Bohemian Rhapsody</h2>
+                            <b>Genero:</b> Biografica
+                            <br />
+                            <b>Descripción:</b>Película biográfica británica-estadounidense de 2018 sobre el cantante británico Freddie Mercury y el grupo de rock Queen.
+                            <br />
+                            <b>Duración:</b>120min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 7 }, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/5.1.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>Animales Fantasticos</h2>
+                            <b>Genero:</b> Aventura
+                            <br />
+                            <b>Descripción:</b>A pesar de que algunos la consideran una precuela de la saga de Harry Potter, Rowling ha dicho que no lo es, sino que se trata de una historia ambientada en el mismo mundo mágico pero con personajes nuevos.
+                            <br />
+                            <b>Duración:</b>133min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 8}, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/6.1.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>El potro</h2>
+                            <b>Genero:</b> Biografica
+                            <br />
+                            <b>Descripción:</b>La vida de rodrigo
+                            <br />
+                            <b>Duración:</b>100min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 2 }, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/miObraMaestra.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>Mi obra maestra</h2>
+                            <b>Genero:</b> Comedia Negra
+                            <br />
+                            <b>Descripción:</b>Mi obra maestra es una película argentina de 2018 escrita por Andrés Duprat, dirigida por Gastón Duprat y protagonizada por Guillermo Francella y Luis Brandoni.
+                            <br />
+                            <b>Duración:</b>100min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 9 }, null)
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x300]" style="height: 350px; width: 100%; display: block;" src="~/Content/img/bg-img/10.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h2>Creed II</h2>
+                            <b>Genero:</b> Drama
+                            <br />
+                            <b>Descripción:</b>DramaSecuela de la película Creed del año 2015 y la octava entrega de la serie de películas de Rocky
+                            <br />
+                            <b>Duración:</b>129min
+                        </p>
+                    </div>
+                    @Html.ActionLink("Comprar", "Create", "Entrada", new { id = Session["id"], pelicula = 10 }, null)
+                </div>
+               
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

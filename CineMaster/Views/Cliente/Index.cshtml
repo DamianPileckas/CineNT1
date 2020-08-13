@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CineMaster.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div style="
+    background: white;
+    opacity: 0.8;
+    box-shadow: 1px 1px 10px black;
+    padding: 5px;
+    margin:5%;
+">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nro_Tarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contrasenia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dni_Cliente)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Logeado)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nro_Tarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contrasenia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dni_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logeado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Cliente_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Cliente_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Cliente_ID })
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>

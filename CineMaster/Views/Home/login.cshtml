@@ -1,0 +1,69 @@
+﻿@model CineMaster.Models.Cliente
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+    <div style="
+        background: white;
+        opacity: 0.7;
+        box-shadow: 1px 1px 10px black;
+        padding: 15px;
+        margin:5%;
+        ">
+        <div class="text-center">
+            <div style="padding:5px;">
+                <div class="form-group centerlook">
+                    <div class="col-md-10 form-group" style="text-align:center;">
+                        @Html.Label("Documento")
+
+                        @Html.EditorFor(model => model.Dni_Cliente, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Dni_Cliente, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group centerlook">
+                    <div class="col-md-10 form-group">
+                        @Html.Label("Contraseña")
+
+                        @Html.PasswordFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group centerlook">
+                <button id="btnLogin" type="submit" >Login</button>
+            </div>
+            <div class="form-group centerlook">
+
+            </div>
+            <div class="form-group error">
+                @if (@ViewBag.Failedcount != null)
+                {
+
+                    <label> Failed Attempt count is: @ViewBag.Failedcount</label>
+                }
+
+                @if (@ViewBag.NotValidUser != null)
+                {
+
+                    <label> @ViewBag.NotValidUser</label>
+                }
+            </div>
+
+        </div>
+
+    </div>
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
